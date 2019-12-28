@@ -55,6 +55,6 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         """ return short name of user """
         return self.name
 
-    def __str__(sel):
+    def __str__(self):
         """ return string representation of user """
         return self.email
