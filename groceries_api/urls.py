@@ -5,10 +5,10 @@ from groceries_api import views
 
 router = DefaultRouter()
 router.register('groceries', views.GroceriesViewSet,basename='groceriesModel')
-router.register('profile', views.UserProfileViewSet,basename='profileModel')
+router.register('profile', views.UserProfileViewSet)
 
 urlpatterns = [
-    path('login',views.UserLoginApiView.as_view()),
+    path('login/',views.UserLoginApiView.as_view()),
     path('', include(router.urls)),
 
 ]
