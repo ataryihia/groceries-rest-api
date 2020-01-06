@@ -6,6 +6,9 @@ django user model
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
+from django.conf import settings
+
+
 
 
 class UserProfileManager(BaseUserManager):
@@ -58,3 +61,20 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         """ return string representation of user """
         return self.email
+
+
+
+class Groceries(models.Model):
+    """groceries status update"""
+
+    user_profile= models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    name = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
+    expire_on = models.DateTimeField(auto_now_add=False)
+    quantity = models.IntegerField()
+
+    def __str__(self):
+        return self.name
